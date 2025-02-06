@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -33,15 +32,31 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
       height: withSpring(scaleImage.value),
     };
   });
+
+  const drag = Gesture.Pan().onChange((event) => {
+    translateX.value += event.changeX;
+    translateY.value += event.changeY;
+  });
+
+  const containerStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { translateX: translateX.value },
+        { translateY: translateY.value },
+      ],
+    };
+  });
   return (
-    <View style={{ top: -350 }}>
-      <GestureDetector gesture={doubleTap}>
-        <Animated.Image
-          source={stickerSource}
-          style={[imageStyle, { width: imageSize, height: imageSize }]}
-          resizeMode="contain"
-        />
-      </GestureDetector>
-    </View>
+    <GestureDetector gesture={drag}>
+      <Animated.View style={[containerStyle, { top: -350 }]}>
+        <GestureDetector gesture={doubleTap}>
+          <Animated.Image
+            source={stickerSource}
+            style={[imageStyle, { width: imageSize, height: imageSize }]}
+            resizeMode="contain"
+          />
+        </GestureDetector>
+      </Animated.View>
+    </GestureDetector>
   );
 }
