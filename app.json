@@ -36,6 +36,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b6c67f40-cdc6-428c-b918-99deb656ef1b"
+      }
+    },
+    "owner": "runningwater"
   }
 }
