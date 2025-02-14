@@ -11,6 +11,7 @@
     "test": "jest --watchAll",
     "lint": "expo lint",
     "andriod-build:dev": "eas build --platform android --profile development",
+    "andriod-build:preview": "eas build --platform android --profile preview",
     "dev": "cross-env APP_VARIANT=development npx expo start"
   },
   "jest": {
