@@ -12,6 +12,7 @@
     "lint": "expo lint",
     "andriod-build:dev": "eas build --platform android --profile development",
     "andriod-build:preview": "eas build --platform android --profile preview",
+    "andriod-build:production": "eas build --platform android",
     "dev": "cross-env APP_VARIANT=development npx expo start"
   },
   "jest": {
